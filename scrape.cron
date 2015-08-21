@@ -1,0 +1,1 @@
+0,0,12 * * * curl http://localhost/HackadayStats/scraper-v0.1.php
