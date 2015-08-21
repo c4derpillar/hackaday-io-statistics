@@ -56,7 +56,6 @@ More to come!
             }
             // Loop through the array containing every project
             foreach ($jsonarray as $ind=>$page) {
-                echo 'printingpage ' . $ind;
                 // Loop through each project and export the parameters we want
                 foreach ($page->projects as $pjktnum=>$pjkt) {
                     // Note: this should probably be a persistent connection
