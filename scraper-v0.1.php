@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<!--
 ///////////////////////////////////
-Hackaday.io Statistics Scraper v0.1
-By Taylor Wass
-taylor.wass@uqconnect.edu.au
+//Hackaday.io Statistics Scraper v0.1
+//By Taylor Wass
+//taylor.wass@uqconnect.edu.au
+//
+//Features:
+//Collects fields under 'Projects' for every project on Hackaday.io. 
+//Usually I configure the server to add a timestamp and have scheduled the script
+//every 12 hours to avoid going over the request limit.
+//
+//
+//How to use:
+//0. Create an SQL database containing the following fields: 
+//project_id, url, owner_id, name, summary, image_url, views, comments, followers,
+//skulls, logs, details, instructions, components, images, created, updated
+//1. Enter your SQL details below
+//2. Enter your dev.hackaday.io API key below (register a project)
+//
+//You might want to consider increasing max_execution_time in PHP.ini
+//Needs PHP 5
+//More to come!
 
-Features:
-Collects fields under 'Projects' for every project on Hackaday.io. 
-Usually I configure the server to add a timestamp and have scheduled the script
-every 12 hours to avoid going over the request limit.
-
-
-How to use:
-0. Create an SQL database containing the following fields: 
-project_id, url, owner_id, name, summary, image_url, views, comments, followers,
-skulls, logs, details, instructions, components, images, created, updated
-1. Enter your SQL details below
-2. Enter your dev.hackaday.io API key below (register a project)
-
-You might want to consider increasing max_execution_time in PHP.ini
-Needs PHP 5
-More to come!
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
         <?php
+            echo "test";
             // Please change these details to that of your MySQL server
             $servername = "localhost";
             $username = "root";
@@ -69,8 +62,9 @@ More to come!
                     $sql = "INSERT INTO " . $dbname . " (project_id, url, owner_id, name, summary, image_url, views, comments, followers, skulls, logs, details, instructions, components, images, created, updated)
                     VALUES ('". $pjkt->id . "','" . mysql_real_escape_string($pjkt->url) . "','" . $pjkt->owner_id . "','" . mysql_real_escape_string($pjkt->name) . "','" . mysql_real_escape_string($pjkt->summary) . "','" . mysql_real_escape_string($pjkt->image_url) . "','" . $pjkt->views . "','" . $pjkt->comments . "','" . $pjkt->followers . "','" . $pjkt->skulls . "','" . $pjkt->logs . "','" . $pjkt->details . "','" . $pjkt->instruction . "','" . $pjkt->components . "','" . $pjkt->images . "','" . $pjkt->created . "','" . $pjkt->updated . "'" .  ");";
                     if (mysqli_multi_query($conn, $sql)) {
-                        echo "New records created successfully";
                     } else {
+                        // Handle MySQL error
+                        //
                         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                     }
                     // Bye bye
@@ -78,5 +72,3 @@ More to come!
                 }
             }
         ?>
-    </body>
-</html>
