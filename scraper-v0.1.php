@@ -21,7 +21,6 @@
 //More to come!
 
         <?php
-            echo "test";
             // Please change these details to that of your MySQL server
             $servername = "localhost";
             $username = "root";
