@@ -27,7 +27,7 @@
             $username = "root";
             $password = "root";
             $dbname = "hackadayqf";
-            $apikey = 'NFWoWvvaAPuykf7a';
+            $apikey = '';
         
             // Set up arrays to store data
             $qflist = array();
