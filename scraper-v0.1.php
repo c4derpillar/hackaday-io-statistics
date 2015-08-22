@@ -21,7 +21,7 @@
 //More to come!
 
         <?php
-            // Please change these details to that of your MySQL server
+            // Please change these details to that of your MySQL server/API key
             $servername = "localhost";
             $username = "root";
             $password = "root";
